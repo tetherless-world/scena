@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:11
+    steps:
+      - checkout
+      - restore_cache:
+          key: sbt-cache-v1
+      - run:
+          name: Build
+          command: |
+            sbt clean update package
+      - save_cache:
+          key: sbt-cache-v1
+          paths:
+            - "~/.ivy2/cache"
+            - "~/.sbt"
+            - "~/.m2"
