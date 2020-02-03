@@ -13,12 +13,11 @@ developers := List(Developer("nfusionsz",
     url("https://github.com/gordom6")))
 homepage := Some(url("https://github.com/tetherless-world/scena"))
 libraryDependencies ++= Seq(
-  "com.novocode" % "junit-interface" % "0.11" % "test",
   "io.lemonlabs" %% "scala-uri" % "1.5.1",
   "org.apache.jena" % "jena-core" % jenaVersion,
   "org.apache.jena" % "jena-geosparql" % jenaVersion,
-  "org.scalatest" %% "scalatest" % "3.0.8" % "test",
-  "org.slf4j" % "slf4j-simple" % "1.7.26"
+  "org.scalatest" %% "scalatest" % "3.0.8" % Test,
+  "org.slf4j" % "slf4j-simple" % "1.7.26" % Test
 )
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0"))
 name := "scena"
