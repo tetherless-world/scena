@@ -18,7 +18,7 @@ object TestDomainModel {
 
   implicit object TestModelRdfWriter extends RdfWriter[TestDomainModel] {
     override def write(model: Model, value: TestDomainModel): Resource = {
-      val resource = ResourceFactory.createResource(value.uri.toString)
+      val resource = model.createResource(value.uri.toString)
       resource.addProperty(RDFS.label, value.label)
     }
   }
