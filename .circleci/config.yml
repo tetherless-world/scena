@@ -17,3 +17,6 @@ jobs:
             - "~/.ivy2/cache"
             - "~/.sbt"
             - "~/.m2"
+      - store_test_results:
+          path: target/test-reports
+
