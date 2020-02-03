@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Build
           command: |
-            sbt clean update package
+            sbt clean update package test
       - save_cache:
           key: sbt-cache-v1
           paths:
