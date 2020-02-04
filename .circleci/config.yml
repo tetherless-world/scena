@@ -26,6 +26,11 @@ jobs:
           name: Build
           command: |
             sbt clean update package test
+      - run:
+          name: Clear secret data before caching
+          command: |
+            rm -fr ~/.sbt/gpg
+            rm ~/.sbt/1.0/sonatype.sbt
       - save_cache:
           key: sbt-cache-v1
           paths:
