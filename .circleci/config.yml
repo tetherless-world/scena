@@ -26,6 +26,14 @@ jobs:
           name: Build
           command: |
             sbt clean update package test
+      - store_test_results:
+          path: target/test-reports
+      - run:
+          name: Publish (master branch only)
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              sbt publishSigned
+            fi
       - run:
           name: Clear secret data before caching
           command: |
@@ -37,11 +45,3 @@ jobs:
             - "~/.ivy2/cache"
             - "~/.sbt"
             - "~/.m2"
-      - store_test_results:
-          path: target/test-reports
-      - run:
-          name: Publish (master branch only)
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              sbt publishSigned
-            fi
