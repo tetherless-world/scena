@@ -19,4 +19,11 @@ jobs:
             - "~/.m2"
       - store_test_results:
           path: target/test-reports
-
+      - run:
+          name: Publish
+          command: |
+            mkdir -p ~/.sbt/1.0
+            echo "credentials += Credentials(\"Sonatype Nexus Repository Manager\", \"oss.sonatype.org\", \"$SONATYPE_USERNAME\", \"$SONATYPE_PASSWORD\")" >>~/.sbt/1.0/sonatype.sbt
+            echo "pgpPassphrase := Some(Array[Char]())" >>~/.sbt/1.0/sonatype.sbt
+            cat ~/.sbt/1.0/sonatype.sbt
+            # sbt publishSigned
