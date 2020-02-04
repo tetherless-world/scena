@@ -27,5 +27,5 @@ jobs:
             echo "credentials += Credentials(\"Sonatype Nexus Repository Manager\", \"oss.sonatype.org\", \"$SONATYPE_USERNAME\", \"$SONATYPE_PASSWORD\")" >>~/.sbt/1.0/sonatype.sbt
             echo "pgpPassphrase := Some(Array[Char]())" >>~/.sbt/1.0/sonatype.sbt
             # See https://discuss.circleci.com/t/gpg-keys-as-environment-variables/28641/3
-            echo -e \"$OSSRH_GPG_KEY\" | gpg --import
+            echo -e "$OSSRH_GPG_KEY" | gpg --import
             sbt publishSigned
