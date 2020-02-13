@@ -33,4 +33,4 @@ scalaVersion in ThisBuild := "2.12.10"
 scmInfo := Some(ScmInfo(url("https://github.com/tetherless-world/scena"), "git@github.com:tetherless-world/scena.git"))
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v")
 //useGpg := false
-version := "1.0.0-SNAPSHOT"
+version := "1.0.0"
