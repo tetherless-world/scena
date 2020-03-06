@@ -13,7 +13,6 @@ developers := List(Developer("nfusionsz",
     url("https://github.com/gordom6")))
 homepage := Some(url("https://github.com/tetherless-world/scena"))
 libraryDependencies ++= Seq(
-  "io.lemonlabs" %% "scala-uri" % "1.5.1",
   "org.apache.jena" % "jena-core" % jenaVersion,
   "org.apache.jena" % "jena-geosparql" % jenaVersion,
   "org.scalatest" %% "scalatest" % "3.0.8" % Test,
