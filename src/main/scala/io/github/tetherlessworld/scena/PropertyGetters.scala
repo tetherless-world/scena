@@ -15,32 +15,20 @@ trait PropertyGetters {
   protected final def getPropertyObjects(property: Property): List[RDFNode] =
     resource.listProperties(property).asScala.toList.map(statement => statement.getObject)
 
-  //  protected final def getPropertyObjectFloats(property: Property): List[Float] =
-  //    getPropertyObjectLiterals(property).map(literal => literal.getFloat)
-  //
-  //  protected final def getPropertyObjectInts(property: Property): List[Int] =
-  //    getPropertyObjectLiterals(property).map(literal => literal.getInt)
-  //
-  //  protected final def getPropertyObjectFloat(property: Property): Option[Float] =
-  //    getPropertyObjectLiteral(property).map(literal => literal.getFloat)
-  //
-  //  protected final def getPropertyObjectLong(property: Property): Option[Long] =
-  //    getPropertyObjectLiteral(property).map(literal => literal.getLong)
+  protected final def getPropertyObjectFloats(property: Property): List[Float] =
+    getPropertyObjectLiterals(property).map(literal => literal.getFloat)
+
+  protected final def getPropertyObjectInts(property: Property): List[Int] =
+    getPropertyObjectLiterals(property).map(literal => literal.getInt)
+
+  protected final def getPropertyObjectLongs(property: Property): List[Long] =
+    getPropertyObjectLiterals(property).map(literal => literal.getLong)
 
   protected final def getPropertyObjectLiterals(property: Property): List[Literal] =
     getPropertyObjects(property).flatMap(object_ => if (object_.isLiteral) Some(object_.asLiteral()) else None)
 
   protected final def getPropertyObjectResources(property: Property): List[Resource] =
     getPropertyObjects(property).flatMap(node => if (node.isResource) Some(node.asResource()) else None)
-
-  //  protected final def getPropertyObjectResourceIdentifier(property: Property): Option[String] =
-  //    getPropertyObjectResourceString(property, DCTerms.identifier)
-  //
-  //  protected final def getPropertyObjectResourceLabel(property: Property): Option[String] =
-  //    getPropertyObjectResourceString(property, RDFS.label)
-
-  //  protected final def getPropertyObjectResourceString(property: Property, literal: Property): Option[String] =
-  //    Some(getPropertyObjectResource(property).get.getProperty(literal).getObject.asLiteral.getString)
 
   protected final def getPropertyObjectStrings(property: Property): List[String] =
     getPropertyObjectLiterals(property).map(literal => literal.getString)
