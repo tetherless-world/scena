@@ -1,12 +1,10 @@
 package io.github.tetherlessworld.scena
 
-import org.apache.jena.rdf.model.ResourceFactory
 import org.apache.jena.vocabulary.DCTerms
 
 trait DcTermsProperties extends PropertyGetters with PropertySetters {
-  final def identifier: Option[String] = getPropertyObjectStrings(DCTerms.identifier).headOption
+  final def identifiers: List[String] = getPropertyObjectStrings(DCTerms.identifier)
 
-  final def identifier_=(value: String): Unit =
-    setProperty(DCTerms.identifier, List(ResourceFactory.createPlainLiteral(value)))
-
+  final def identifiers_=(values: List[String]): Unit =
+    setPropertyLiterals(DCTerms.identifier, values)
 }
